@@ -20,8 +20,16 @@ describe("Assertion demo", function(){
             .and('include','orangehrmlive.com/web/')
             .and('contain','orangehrmlive')
 
-            cy.get()
+            cy.get('.orangehrm-login-branding > img').should('be.visible')
+            .and('exist')
 
+            cy.xpath('//a').should('have.length','5')  //check number of links available in page
+
+            cy.get("input[placeholder='Username']").type("Admin")
+            cy.get("input[placeholder='Username']").should("have.value","Admin")
+
+
+            
             
 
 
@@ -32,7 +40,4 @@ describe("Assertion demo", function(){
 
 
     })
-
-
-
 })
