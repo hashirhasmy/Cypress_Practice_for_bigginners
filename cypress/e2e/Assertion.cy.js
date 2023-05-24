@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 
 describe("Assertion demo", function(){
 
@@ -17,6 +19,8 @@ describe("Assertion demo", function(){
             cy.url().should('eq','https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
             .and('include','orangehrmlive.com/web/')
             .and('contain','orangehrmlive')
+
+            cy.get()
 
             
 
