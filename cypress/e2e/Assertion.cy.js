@@ -46,8 +46,8 @@ describe("Assertion demo", function(){
                     expect(actual).to.not.equal(expected)
                     
                     //TDD style Assertion
-                    assert.equal(actual.expected)
-                    assert.notequal(actual.expected)
+                    assert.equal(actual,expected)
+                    assert.notequal(actual,expected)
             })
     })
 
