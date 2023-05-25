@@ -49,7 +49,6 @@ describe("Assertion demo", function(){
                     assert.equal(actual.expected)
                     assert.notequal(actual.expected)
             })
-
     })
 
 })
