@@ -29,14 +29,18 @@ describe("DropDown Elemnt", ()=> {
 
     it("Working with Dynamic drop down", ()=> {
         cy.visit("https://www.google.com/")
-        cy.get("#APjFqb").type("Vijay")
-        // cy.get("div[class='erkvQe'] ul[role='listbox']").find("li span").contains("Vijay Antony").click()   -----1st way
-
-        //2nd way 
-        cy.get("div.wM6W7d>span").each(($el, index, $list) => {
-            if ($el.someMethod() === 'Vijay Antony') {
-              cy.wrap($el).click()
+        cy.get("[name='q']").type("Vijay")
+        // 1st way
+        //cy.get("div[class='erkvQe'] ul[role='listbox']").find("li span").contains("Vijay Antony").click()  
+        cy.wait(3000)
+       //2nd way 
+        cy.get("div.wM6W7d").find("span").should('have.length',12)
+        cy.get("div.wM6W7d").find("span").each(($el, index, $list) => {
+            if ($el.text() === 'Vijay') 
+            {
+              cy.wrap($el).click();
             }
           })
+        cy.get("[name='q']").should('have.value','vijay')
     })
 })
