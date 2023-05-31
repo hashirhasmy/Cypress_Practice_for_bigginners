@@ -1,3 +1,5 @@
+import 'cypress-iframe';
+
 describe("Working with IFreame", ()=> {
     it.skip("hanling iframe approach 01", () => {
         cy.visit("https://the-internet.herokuapp.com/iframe")
@@ -9,18 +11,17 @@ describe("Working with IFreame", ()=> {
         cy.get("button[title='Bold']").click()
     })
 
-    it.only("hanling iframe approach 02 by using custom command", () => {
+    it.skip("hanling iframe approach 02 by using custom command", () => {
         cy.visit("https://the-internet.herokuapp.com/iframe")
         cy.getIframe("#mce_0_ifr").clear().type("Welcome {ctrl+a}")
         cy.get("button[title='Bold']").click()
     })
 
 
-    it.skip("hanling iframe approach 03 by using IframePlugin", () => {
+    it.only("hanling iframe approach 03 by using IframePlugin", () => {
         cy.visit("https://the-internet.herokuapp.com/iframe")
+        cy.frameLoaded("#mce_0_ifr")  //load the frame
+        cy.iframe("#mce_0_ifr").clear().type("Welcome {ctrl+a}")
+        cy.get("button[title='Bold']").click()
     })
-
-
-
-
 })
