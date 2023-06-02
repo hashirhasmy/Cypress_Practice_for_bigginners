@@ -39,9 +39,31 @@ describe("Handling Tables", ()=> {
     })
 
     it("Check data from specific row and column",()=> {
-        cy.get("table[class='table table-bordered table-hover']>tbody>tr:nth-child(5)>td:nth-child(3)")
+            cy.get("table[class='table table-bordered table-hover']>tbody>tr:nth-child(5)>td:nth-child(3)")
                 .contains("xvrt@test.com")             
     })
+
+    it("Read all the rows and columns data in first page",()=> {
+            cy.get("table[class='table table-bordered table-hover']>tbody>tr")
+                .each(($row, index, $rows) => {
+                       cy.wrap($row).within(()=> {
+                                cy.get("td").each(($column, index, $columns )=> {
+                                        cy.log($column.text())
+                                })
+                       }) 
+                })
+    })
+
+
+    it.only("Pagination", ()=> {
+            // find the pages count
+            cy.get(".col-sm-6.text-end").then((x)=> {
+                let myText = x.text(); //Showing 1 to 10 of 13121 (1313 Pages)
+                let totalPages = myText.substring(myText.indexOf("(")+1, myText.indexOf("Pages")-1);
+                cy.task('log', 'Table page count: ' + totalPages);
+            })
+    })
+    
 
 
 
