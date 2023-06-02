@@ -26,7 +26,7 @@ describe("Handling Tables", ()=> {
         //     });
 
            // We can see the out put in terminal it self if we use thismethod
-        cy.get("table[class='table table-bordered table-hover']>tbody>tr").then(($rows) => {
+            cy.get("table[class='table table-bordered table-hover']>tbody>tr").then(($rows) => {
             const rowCount = $rows.length;
             cy.task('log', 'Table row count: ' + rowCount);
           });
