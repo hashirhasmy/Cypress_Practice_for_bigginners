@@ -57,11 +57,32 @@ describe("Handling Tables", ()=> {
 
     it.only("Pagination", ()=> {
             // find the pages count
-            cy.get(".col-sm-6.text-end").then((x)=> {
-                let myText = x.text(); //Showing 1 to 10 of 13121 (1313 Pages)
-                let totalPages = myText.substring(myText.indexOf("(")+1, myText.indexOf("Pages")-1);
-                cy.task('log', 'Table page count: ' + totalPages);
-            })
+        //     cy.get(".col-sm-6.text-end").then((x)=> {
+        //         let myText = x.text(); //Showing 1 to 10 of 13121 (1313 Pages)
+        //         let totalPages = myText.substring(myText.indexOf("(")+1, myText.indexOf("Pages")-1);
+        //         cy.task('log', 'Table page count: ' + totalPages);
+        //     })
+
+                let totalpages = 5;
+                
+                for(let p =1; p<totalpages; p++)
+                {
+                        if(totalpages>1)
+                        {
+                                cy.log("Active page is :"+p)
+                                cy.get("ul[class='pagination']>li:nth-child("+p+")").click()
+                                cy.wait(5000)
+                                cy.get("table[class='table table-bordered table-hover']>tbody>tr")
+                                .each(($row, index, $rows) => {
+                                 cy.wrap($row).within(()=> {
+                                    cy.get("td:nth-child(3)").then((t)=> {
+                                    cy.log(t.text())
+                                    })
+                                  }) 
+                                })
+
+                        }  
+                }
     })
     
 
