@@ -40,9 +40,7 @@ describe("Handling Tables", ()=> {
 
     it("Check data from specific row and column",()=> {
         cy.get("table[class='table table-bordered table-hover']>tbody>tr:nth-child(5)>td:nth-child(3)")
-                .contains("xvrt@test.com")
-         
-                
+                .contains("xvrt@test.com")             
     })
 
 
