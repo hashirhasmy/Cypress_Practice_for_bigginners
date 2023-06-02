@@ -26,10 +26,21 @@ describe("Handling Tables", ()=> {
         //     });
 
            // We can see the out put in terminal it self if we use thismethod
+           //1)Verify rows of the page
             cy.get("table[class='table table-bordered table-hover']>tbody>tr").then(($rows) => {
+            let expected = 10;
             const rowCount = $rows.length;
             cy.task('log', 'Table row count: ' + rowCount);
+            assert.equal(rowCount,expected)
           });
+
+            //2)Verify columns of the page
+            cy.get("table[class='table table-bordered table-hover']>thead>tr>td").should('have.length',7)
+    })
+
+    it("Check data from specific row and column",()=> {
+        cy.get("table[class='table table-bordered table-hover']>tbody>tr:nth-child(5)>td:nth-child(3)")
+                .contains("xvrt@test.com")
     })
 
 
