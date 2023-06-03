@@ -1,6 +1,6 @@
 import 'cypress-iframe';
 
-describe("Working with IFreame", ()=> {
+describe("Working with IFreame", () => {
     it.skip("hanling iframe approach 01", () => {
         cy.visit("https://the-internet.herokuapp.com/iframe")
         const iframe = cy.get("#mce_0_ifr")

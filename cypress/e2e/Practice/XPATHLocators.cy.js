@@ -8,10 +8,10 @@ describe("xpathlocator Testing", () => {
     //     });
     //   });
 
-    it("Verify the nest sellers image count", ()=> {
+    it("Verify the nest sellers image count", () => {
         cy.visit('http://automationpractice.pl/index.php')
         cy.get(".blockbestsellers[data-toggle='tab']").click()
-        cy.xpath("//ul[@id='blockbestsellers']/li").should('have.length',6)
+        cy.xpath("//ul[@id='blockbestsellers']/li").should('have.length', 6)
     })
 
 })
