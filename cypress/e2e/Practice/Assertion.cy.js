@@ -3,7 +3,7 @@
 
 describe("Assertion demo", function () {
 
-        it("Implicit wait", () => {
+        it("Implicit Assertion", () => {
 
                 cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
 
