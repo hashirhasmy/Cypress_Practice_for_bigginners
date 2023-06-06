@@ -29,12 +29,56 @@
 /// <reference types="cypress-xpath" />
 
 
-    Cypress.Commands.add('getIframe', (iframeLocator)=> {
-            return cy.get(iframeLocator)
-            .its('0.contentDocument.body')
-            .should('be.visible')
-            .then(cy.wrap)
-    })
+
+
+Cypress.Commands.add('getIframe', (iframeLocator) => {
+    return cy.get(iframeLocator)
+        .its('0.contentDocument.body')
+        .should('be.visible')
+        .then(cy.wrap)
+})
+
+//To click links using custom comands
+Cypress.Commands.add('clickLink', (lable) => {
+    cy.get('a').contains(lable).click()
+})
+
+//Overite the custom comand to work with any uper case lower case sentence
+/*Cypress.Commands.overwrite('contains',(originalFn, subject, filter, text, options = {})=> {
+    //determine if a filtered argumant get passed
+        if(typeof text == 'object'){
+            options = text
+            text = filter
+            filter = undefined
+        }
+
+        options.matchCase = false
+
+        return originalFn(subject, filter, text, options)
+}) */
+
+
+
+//custom command for login
+Cypress.Commands.add('loginApp', (email, password) => {
+        cy.get("#Email").type(email)
+        cy.get("#Password").type(password)
+        cy.get("button[class='button-1 login-button']").click()
+})
+
+
+
+/*
+    Way 01 from Achira 
+    function add (){
+
+    }
+    Way 02
+    const add = ()=>{
+    } 
+*/
+
+
 
 
 

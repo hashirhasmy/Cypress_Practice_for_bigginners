@@ -6,7 +6,7 @@ describe("Data driven testing", () => {
 
         cy.fixture('orangeHRM2').then((data) => {
             data.forEach((userData) => {
-                cy.get(':nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input').type(userData.username);
+                cy.get("input[placeholder='Username']").type(userData.username);
                 cy.get("input[placeholder='Password']").type(userData.password);
                 cy.get("button[type='submit']").click();
 
