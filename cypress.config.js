@@ -1,9 +1,9 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
-  video: false,
+  //video: false,
   e2e: {
-    excludeSpecPattern: "**/videos/**",
+    //excludeSpecPattern: "**/videos/**",
     
 
     setupNodeEvents(on, config) {
