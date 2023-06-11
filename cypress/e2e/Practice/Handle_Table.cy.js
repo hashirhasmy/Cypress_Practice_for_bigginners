@@ -55,7 +55,7 @@ describe("Handling Tables", () => {
         })
 
 
-        it.only("Pagination", () => {
+        it("Pagination", () => {
                 // find the pages count
                 //     cy.get(".col-sm-6.text-end").then((x)=> {
                 //         let myText = x.text(); //Showing 1 to 10 of 13121 (1313 Pages)
